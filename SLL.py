@@ -1,6 +1,7 @@
 
 # Singly Linkidlist---------------------------------------------------------------------
 
+
 class Node:
     def __init__(self,data):
         self.data=data
@@ -85,6 +86,24 @@ class Linkdlist:
                 n = n.ref
             n.ref=None
 
+    def delete_node_by_value( self,x):
+        if self.head is None:
+            print('list is empty')
+            return
+        if self.head.data == x:
+            self.head=self.head.ref
+            return
+        else:
+            n=self.head
+            while n.ref is not None:
+                if x==n.ref.data:
+                    break
+                n=n.ref
+            if n.ref is None:
+                print('x is not in the list')
+            else:
+                n.ref=n.ref.ref
+
 
 ll1=Linkdlist()
 
@@ -95,7 +114,8 @@ ll1.add_end(39)
 ll1.add_after(100,20)
 ll1.add_before(200,10)
 ll1.delete_last()
-ll1.delete_last()
-ll1.delete_begin()
+# ll1.delete_last()
+# ll1.delete_begin()
+ll1.delete_node_by_value(100)
 ll1.print_LL()
 
