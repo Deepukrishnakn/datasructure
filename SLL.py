@@ -74,6 +74,16 @@ class Linkdlist:
             self.head = self.head.ref
 
 
+    def delete_last(self):
+        if self.head is None:
+            print('list is empty')
+        else:
+            n=self.head
+            while n.ref.ref is not None:
+                n = n.ref
+            n.ref=None
+
+
 ll1=Linkdlist()
 
 ll1.add_begin(10)
@@ -82,6 +92,8 @@ ll1.add_end(30)
 ll1.add_end(39)
 ll1.add_after(100,20)
 ll1.add_before(200,10)
-ll1.delete_begin()
+ll1.delete_last()
+ll1.delete_last()
 ll1.delete_begin()
 ll1.print_LL()
+

@@ -7,6 +7,7 @@ def insertionsort(my_list):
             pos = pos-1
         my_list[pos]=current_element
 
+
 list1 =[4,3,6,8,1,34,22,5,40]
 insertionsort(list1)
 print(list1)
