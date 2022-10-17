@@ -77,6 +77,8 @@ class Linkdlist:
     def delete_last(self):
         if self.head is None:
             print('list is empty')
+        elif self.head.ref is None:
+            self.head = None
         else:
             n=self.head
             while n.ref.ref is not None:
