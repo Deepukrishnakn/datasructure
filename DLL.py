@@ -53,19 +53,50 @@ class DLL:
         new_node=Node(data)
         if self.head is None:
             self.head = new_node
+        else:
             n=self.head
             while n is not None:
                 n=n.nref
             n.nref = new_node
             new_node.pref=n
+    
+    def add_after(self,data,x):
+        if self.head is None:
+            print('list is empty')
+        else:
+            n=self.head
+            while n is not None:
+                if x==n.data:
+                    break
+                n=n.nref
+            if n is None:
+                print('x not in the list')
+            new_node=Node(data)
+            new_node.nref=n.nref
+            new_node.pref=n
+            if n.nref is not None:
+                n.pref=new_node
+            n.nref=new_node
+
+
+    def delete_begin(self):
+        if self.head is None:
+            print('list is empty')
+            return
+        if self.head.nref is None:
+            self.head = None
+            print('list is empty after delete')
+        else:
+            self.head=self.head.nref
+            self.head.pref=None
 
 
 dll1=DLL()
 
 # dll1.add_empty_ll(10)
-# dll1.add_begin(20)
-
-dll1.add_begin(20)
-dll1.add_begin(30)
+dll1.add_begin(10)
+dll1.add_after(40,10)
+dll1.add_after(30,40)
+# dll1.add_end(50)
 dll1.print_DLL()
-
+# dll1.delete_begin()
