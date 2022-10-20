@@ -1,8 +1,6 @@
 #DLL-------------------------------------------------------
 
 
-from hashlib import new
-
 
 class Node():
     def __init__(self,data):
@@ -99,9 +97,6 @@ class DLL:
                 else:
                     n.pref=new_node
 
-
-
-
     def delete_begin(self):
         if self.head is None:
             print('list is empty')
@@ -113,6 +108,45 @@ class DLL:
             self.head=self.head.nref
             self.head.pref=None
 
+    def delete_last(self):
+        if self.head is None:
+            print('list is empty')
+        elif self.head.nref is None:
+            self.head=None
+        else:
+            n=self.head
+            while n.nref.nref is not None:
+                n=n.nref
+            n.nref=None
+         
+    def delete_by_value(self,x):
+        if self.head is None:
+            print('list is empty')
+            return
+        if self.head.nref is None:
+            if x==self.head.data:
+                self.head=None
+            else:
+                print('x is not in the list')
+                return
+        if self.head.data == x:
+            self.head = self.head.nref
+            self.head.pref=None
+            return
+        n=self.head
+        while n.nref is not None:
+            if x==n.data:
+                break
+            n=n.nref
+        if n.nref is not None:
+            n.nref.pref=n.pref
+            n.pref.nref=n.nref
+        else:
+            if n.data == x:
+                n.pref.nref=None
+            else:
+                print('x is not in the list')
+
 
 dll1=DLL()
 
@@ -120,6 +154,9 @@ dll1=DLL()
 dll1.add_begin(10)
 dll1.add_after(40,10)
 dll1.add_before(50,40)
+dll1.add_before(60,50)
 # dll1.add_end(50)
+# dll1.delete_last()
+# dll1.delete_by_value(10)
 dll1.print_DLL()
-# dll1.delete_begin()
+
