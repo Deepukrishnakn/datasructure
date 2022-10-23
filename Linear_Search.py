@@ -8,7 +8,7 @@ def linearserch(list1,key):
     if flag==True:
         
         for i in list2:
-            print('key is found index is:',i,",")
+            print('key is found index is:',i)
     else:
         print('key is not found')
 
