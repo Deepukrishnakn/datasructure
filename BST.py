@@ -38,6 +38,14 @@ class BST:
                 self.rchild.search(data)
             else:
                 print('key is not found')
+    
+    def preorder(self):
+        print(self.key)
+        if self.lchild:
+            self.lchild.preorder()
+        if self.rchild:
+            self.rchild.preorder()
+
 
 
 
@@ -45,6 +53,6 @@ root = BST(10)
 list1=[3,5,44,21,7,5,90]
 for i in list1:
     root.insert(i)
-root.search(4)
+root.preorder()
 
 
